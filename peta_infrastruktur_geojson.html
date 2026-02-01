@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peta Program Infrastruktur Air Yogyakarta</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f5f5;
+            color: #2c2c2c;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #404040 100%);
+            color: white;
+            padding: 24px 32px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            font-size: 15px;
+            opacity: 0.85;
+            font-weight: 400;
+        }
+
+        .container {
+            display: flex;
+            height: calc(100vh - 100px);
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+
+        .sidebar {
+            width: 400px;
+            background: white;
+            padding: 24px;
+            overflow-y: auto;
+            box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
+            border-right: 1px solid #e0e0e0;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: #f5f5f5;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: #c0c0c0;
+            border-radius: 4px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background: #a0a0a0;
+        }
+
+        .sidebar h3 {
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+            color: #666;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: #e0e0e0;
+            margin: 24px 0;
+        }
+
+        /* Search Box */
+        .search-box {
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d0d0d0;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #5B7FDB;
+            box-shadow: 0 0 0 3px rgba(91, 127, 219, 0.1);
+        }
+
+        .search-input::placeholder {
+            color: #999;
+        }
+
+        /* Year Filter */
+        .year-filter {
+            margin-bottom: 20px;
+        }
+
+        .year-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .year-btn {
+            padding: 10px;
+            border: 1px solid #d0d0d0;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 13px;
+            font-weight: 500;
+            color: #666;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .year-btn:hover {
+            background: #fafafa;
+            border-color: #b0b0b0;
+        }
+
+        .year-btn.active {
+            background: #5B7FDB;
+            color: white;
+            border-color: #5B7FDB;
+            font-weight: 600;
+        }
+
+        /* Budget Filter */
+        .budget-filter {
+            margin-bottom: 20px;
+        }
+
+        .budget-range {
+            margin-top: 12px;
+        }
+
+        .budget-input-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .budget-input {
+            padding: 10px 12px;
+            border: 1px solid #d0d0d0;
+            border-radius: 4px;
+            font-size: 13px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .budget-input:focus {
+            outline: none;
+            border-color: #5B7FDB;
+        }
+
+        .budget-quick-filters {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .budget-quick-btn {
+            padding: 8px;
+            border: 1px solid #d0d0d0;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            color: #666;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s ease;
+        }
+
+        .budget-quick-btn:hover {
+            background: #fafafa;
+        }
+
+        .budget-quick-btn.active {
+            background: #E07B8F;
+            color: white;
+            border-color: #E07B8F;
+        }
+
+        /* Kecamatan Filter */
+        .kecamatan-filter {
+            margin-bottom: 20px;
+        }
+
+        .kecamatan-list {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 8px;
+        }
+
+        .kecamatan-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .kecamatan-list::-webkit-scrollbar-track {
+            background: #f5f5f5;
+        }
+
+        .kecamatan-list::-webkit-scrollbar-thumb {
+            background: #c0c0c0;
+            border-radius: 3px;
+        }
+
+        .kecamatan-item {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.2s ease;
+        }
+
+        .kecamatan-item:hover {
+            background: #f5f5f5;
+        }
+
+        .kecamatan-checkbox {
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .kecamatan-label {
+            font-size: 13px;
+            color: #666;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .kecamatan-count {
+            font-size: 11px;
+            color: #999;
+            background: #f5f5f5;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        .program-filter {
+            margin-bottom: 20px;
+        }
+
+        .filter-btn {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 12px 16px;
+            margin: 6px 0;
+            border: 1px solid #d0d0d0;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+            position: relative;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: #2c2c2c;
+            transform: scaleY(0);
+            transition: transform 0.2s ease;
+        }
+
+        .filter-btn:hover {
+            background: #fafafa;
+            border-color: #b0b0b0;
+        }
+
+        .filter-btn.active::before {
+            transform: scaleY(1);
+        }
+
+        .filter-btn.active {
+            background: #f5f5f5;
+            border-color: #2c2c2c;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .filter-btn.region {
+            opacity: 0.5;
+        }
+
+        .filter-btn.region.active {
+            opacity: 1;
+        }
+
+        .filter-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            margin-right: 12px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .program-info {
+            background: #fafafa;
+            padding: 16px;
+            border-radius: 4px;
+            margin-top: 20px;
+            font-size: 13px;
+            line-height: 1.7;
+            border: 1px solid #e0e0e0;
+        }
+
+        .program-info h4 {
+            color: #1a1a1a;
+            margin-bottom: 12px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .program-info p {
+            color: #666;
+            margin: 8px 0;
+        }
+
+        .program-info strong {
+            color: #2c2c2c;
+            font-weight: 600;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 16px;
+            border-radius: 4px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            transition: all 0.2s;
+        }
+
+        .stat-card:hover {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #666;
+            margin-top: 6px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .reset-filters-btn {
+            width: 100%;
+            padding: 12px;
+            background: #f5f5f5;
+            border: 1px solid #d0d0d0;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: #666;
+            margin-top: 16px;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .reset-filters-btn:hover {
+            background: #e85d75;
+            color: white;
+            border-color: #e85d75;
+        }
+
+        #map {
+            flex: 1;
+            height: 100%;
+            position: relative;
+        }
+
+        .legend {
+            background: white;
+            padding: 18px;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            line-height: 24px;
+            font-size: 13px;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid #e0e0e0;
+        }
+
+        .legend h4 {
+            margin: 0 0 14px 0;
+            color: #1a1a1a;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .legend-section {
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .legend-section:last-child {
+            border-bottom: none;
+        }
+
+        .legend-section>strong {
+            display: block;
+            margin-bottom: 10px;
+            color: #666;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .legend-item {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .legend-marker {
+            width: 28px;
+            height: 28px;
+            margin-right: 10px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+            flex-shrink: 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .legend-color {
+            width: 32px;
+            height: 22px;
+            margin-right: 10px;
+            border-radius: 4px;
+            border: 1px solid #c0c0c0;
+            flex-shrink: 0;
+        }
+
+        .custom-popup .leaflet-popup-content-wrapper {
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .popup-header {
+            background: #2c2c2c;
+            color: white;
+            padding: 14px 16px;
+            margin: -10px -10px 12px -10px;
+            border-radius: 4px 4px 0 0;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: -0.01em;
+        }
+
+        .popup-content {
+            padding: 6px;
+            font-size: 13px;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        .popup-content strong {
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .popup-locations {
+            margin-top: 12px;
+            padding: 12px;
+            background: #fafafa;
+            border-radius: 4px;
+            font-size: 12px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .popup-locations li {
+            margin: 6px 0;
+            padding-left: 6px;
+            color: #666;
+        }
+
+        .popup-budget {
+            background: #f0f9ff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-top: 8px;
+            border-left: 3px solid #5B7FDB;
+        }
+
+        .popup-year {
+            display: inline-block;
+            background: #5CC9A7;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        .loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 36px;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 10000;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+
+        .loading-spinner {
+            border: 4px solid #f0f0f0;
+            border-top: 4px solid #2c2c2c;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        .loading-text {
+            color: #666;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                max-height: 400px;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loading" class="loading">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Memuat peta...</div>
+    </div>
+
+    <div class="header">
+        <div class="header-content">
+            <h1>Peta Program Infrastruktur Air DIY Yogyakarta</h1>
+            <p>Pembangunan Jaringan Distribusi & Pengembangan Zona DMA</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <!-- Search Program -->
+            <h3>Cari Program</h3>
+            <div class="search-box">
+                <input type="text" id="searchInput" class="search-input" placeholder="Cari nama program atau lokasi...">
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Year Filter -->
+            <h3>Filter Tahun Pelaksanaan</h3>
+            <div class="year-filter">
+                <div class="year-buttons">
+                    <button class="year-btn active" onclick="toggleYear('all')">Semua</button>
+                    <button class="year-btn" onclick="toggleYear('2026')">2026</button>
+                    <button class="year-btn" onclick="toggleYear('2027')">2027</button>
+                    <button class="year-btn" onclick="toggleYear('2028')">2028</button>
+                    <button class="year-btn" onclick="toggleYear('2029')">2029</button>
+                    <button class="year-btn" onclick="toggleYear('2030')">2030</button>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Budget Filter -->
+            <h3>Filter Range Anggaran</h3>
+            <div class="budget-filter">
+                <div class="budget-input-group">
+                    <input type="number" id="budgetMin" class="budget-input" placeholder="Min (juta)" min="0">
+                    <input type="number" id="budgetMax" class="budget-input" placeholder="Max (juta)" min="0">
+                </div>
+                <div class="budget-quick-filters">
+                    <button class="budget-quick-btn" onclick="setBudgetRange(0, 600)">
+                        < 600 jt</button>
+                            <button class="budget-quick-btn" onclick="setBudgetRange(600, 900)">600-900 jt</button>
+                            <button class="budget-quick-btn" onclick="setBudgetRange(900, 1200)">900-1.2 M</button>
+                            <button class="budget-quick-btn" onclick="setBudgetRange(1200, 9999)"> > 1.2 M</button>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Kecamatan Filter -->
+            <h3>Filter Kecamatan</h3>
+            <div class="kecamatan-filter">
+                <div class="kecamatan-list" id="kecamatanList">
+                    <!-- Will be populated dynamically -->
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Wilayah Filter -->
+            <h3>Filter Wilayah</h3>
+            <div class="program-filter">
+                <button class="filter-btn region active" onclick="toggleRegion('sleman')">
+                    <span class="filter-icon" style="background: #4A90E2;">SL</span>
+                    Kabupaten Sleman
+                </button>
+                <button class="filter-btn region active" onclick="toggleRegion('yogyakarta')">
+                    <span class="filter-icon" style="background: #E85D75;">YK</span>
+                    Kota Yogyakarta
+                </button>
+                <button class="filter-btn region active" onclick="toggleRegion('bantul')">
+                    <span class="filter-icon" style="background: #50C878;">BT</span>
+                    Kabupaten Bantul
+                </button>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Program Type Filter -->
+            <h3>Filter Jenis Program</h3>
+            <div class="program-filter">
+                <button class="filter-btn active" onclick="toggleProgram('all')">
+                    <span class="filter-icon" style="background: #2c2c2c;">ALL</span>
+                    Tampilkan Semua
+                </button>
+                <button class="filter-btn jdp" onclick="toggleProgram('jdp')">
+                    <span class="filter-icon" style="background: #5B7FDB;">JDP</span>
+                    Pembangunan JDP
+                </button>
+                <button class="filter-btn pergantian" onclick="toggleProgram('pergantian')">
+                    <span class="filter-icon" style="background: #E07B8F;">JDU</span>
+                    Pergantian Pipa
+                </button>
+                <button class="filter-btn zona" onclick="toggleProgram('zona')">
+                    <span class="filter-icon" style="background: #5CC9A7;">DMA</span>
+                    Zona & DMA
+                </button>
+            </div>
+
+            <!-- Reset Button -->
+            <button class="reset-filters-btn" onclick="resetAllFilters()">Reset Semua Filter</button>
+
+            <!-- Stats -->
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-visible">0</div>
+                    <div class="stat-label">Ditampilkan</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-total">49</div>
+                    <div class="stat-label">Total Program</div>
+                </div>
+            </div>
+
+            <div class="program-info">
+                <h4>Informasi Program</h4>
+                <p><strong>JDP:</strong> Jaringan Distribusi Pelayanan - pembangunan infrastruktur baru untuk distribusi
+                    air bersih</p>
+                <p><strong>JDU/JDB:</strong> Jaringan Distribusi Utama/Bawah - pergantian pipa yang sudah tua</p>
+                <p><strong>DMA:</strong> District Metered Area - zona pengukuran untuk kontrol distribusi air</p>
+            </div>
+        </div>
+
+        <div id="map"></div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // Inisialisasi peta
+        const map = L.map('map').setView([-7.7956, 110.3695], 11);
+
+        // Base layer
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            maxZoom: 20
+        }).addTo(map);
+
+        // Layer groups
+        const boundaryLayers = {
+            sleman: L.layerGroup().addTo(map),
+            yogyakarta: L.layerGroup().addTo(map),
+            bantul: L.layerGroup().addTo(map)
+        };
+
+        const programLayers = {
+            jdp: L.layerGroup().addTo(map),
+            pergantian: L.layerGroup().addTo(map),
+            zona: L.layerGroup().addTo(map)
+        };
+
+        // Variables
+        let programData = null;
+        let allMarkers = [];
+        let activeFilters = {
+            year: 'all',
+            budgetMin: null,
+            budgetMax: null,
+            kecamatan: new Set(),
+            program: 'all',
+            search: ''
+        };
+
+        // Load data program
+        async function loadProgramData() {
+            try {
+                const response = await fetch('data/program/program.json');
+                programData = await response.json();
+                initializeKecamatanFilter();
+                addProgramMarkers();
+                updateStats();
+            } catch (error) {
+                console.error('Error loading program data:', error);
+                alert('Gagal memuat data program. Silakan refresh halaman.');
+            }
+        }
+
+        // Initialize Kecamatan Filter
+        function initializeKecamatanFilter() {
+            const kecamatanCount = {};
+
+            // Count programs per kecamatan
+            ['jdp', 'pergantian', 'zona'].forEach(type => {
+                programData[type].forEach(program => {
+                    program.kecamatan.forEach(kec => {
+                        kecamatanCount[kec] = (kecamatanCount[kec] || 0) + 1;
+                    });
+                });
+            });
+
+            // Sort alphabetically
+            const sortedKecamatan = Object.keys(kecamatanCount).sort();
+
+            const kecamatanList = document.getElementById('kecamatanList');
+            kecamatanList.innerHTML = sortedKecamatan.map(kec => `
+                <div class="kecamatan-item" onclick="toggleKecamatan('${kec}')">
+                    <input type="checkbox" class="kecamatan-checkbox" id="kec-${kec}" checked>
+                    <label class="kecamatan-label" for="kec-${kec}">${kec}</label>
+                    <span class="kecamatan-count">${kecamatanCount[kec]}</span>
+                </div>
+            `).join('');
+
+            // Initialize all kecamatan as active
+            sortedKecamatan.forEach(kec => activeFilters.kecamatan.add(kec));
+        }
+
+        // Custom icons
+        const icons = {
+            jdp: L.divIcon({
+                html: '<div style="background: #5B7FDB; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 10px; font-weight: 700; border: 3px solid white; box-shadow: 0 3px 8px rgba(91,127,219,0.4), 0 1px 3px rgba(0,0,0,0.2);">JDP</div>',
+                className: '',
+                iconSize: [36, 36],
+                iconAnchor: [18, 18]
+            }),
+            pergantian: L.divIcon({
+                html: '<div style="background: #E07B8F; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 10px; font-weight: 700; border: 3px solid white; box-shadow: 0 3px 8px rgba(224,123,143,0.4), 0 1px 3px rgba(0,0,0,0.2);">JDU</div>',
+                className: '',
+                iconSize: [36, 36],
+                iconAnchor: [18, 18]
+            }),
+            zona: L.divIcon({
+                html: '<div style="background: #5CC9A7; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 10px; font-weight: 700; border: 3px solid white; box-shadow: 0 3px 8px rgba(92,201,167,0.4), 0 1px 3px rgba(0,0,0,0.2);">DMA</div>',
+                className: '',
+                iconSize: [36, 36],
+                iconAnchor: [18, 18]
+            })
+        };
+
+        // GeoJSON styles
+        const styles = {
+            sleman: {
+                fillColor: '#4A90E2',
+                weight: 2,
+                opacity: 1,
+                color: '#2E5C8A',
+                fillOpacity: 0.25
+            },
+            yogyakarta: {
+                fillColor: '#E85D75',
+                weight: 2,
+                opacity: 1,
+                color: '#B8364A',
+                fillOpacity: 0.25
+            },
+            bantul: {
+                fillColor: '#50C878',
+                weight: 2,
+                opacity: 1,
+                color: '#3A9B5C',
+                fillOpacity: 0.25
+            }
+        };
+
+        // Format currency
+        function formatCurrency(amount) {
+            if (amount >= 1000000000) {
+                return (amount / 1000000000).toFixed(2) + ' M';
+            } else if (amount >= 1000000) {
+                return (amount / 1000000).toFixed(0) + ' jt';
+            }
+            return amount.toLocaleString('id-ID');
+        }
+
+        // Add program markers
+        function addProgramMarkers() {
+            if (!programData) return;
+
+            const programTypes = [
+                { type: 'jdp', layer: programLayers.jdp, color: '#5B7FDB', label: 'JDP' },
+                { type: 'pergantian', layer: programLayers.pergantian, color: '#E07B8F', label: 'JDU & JDB' },
+                { type: 'zona', layer: programLayers.zona, color: '#5CC9A7', label: 'Zona & DMA' }
+            ];
+
+            programTypes.forEach(({ type, layer, color, label }) => {
+                programData[type].forEach(program => {
+                    const marker = L.marker(program.center, { icon: icons[type] });
+
+                    marker.programData = {
+                        ...program,
+                        type: type,
+                        typeLabel: label
+                    };
+
+                    const popupContent = `
+                        <div class="custom-popup">
+                            <div class="popup-header" style="background: ${color};">${program.name}</div>
+                            <div class="popup-content">
+                                <strong>Program:</strong> ${label}<br>
+                                <strong>Kecamatan:</strong> ${program.kecamatan.join(', ')}<br>
+                                <div class="popup-budget">
+                                    <strong>💰 Anggaran:</strong> Rp ${formatCurrency(program.anggaran)}
+                                </div>
+                                <span class="popup-year">📅 Tahun ${program.tahun}</span>
+                                <div class="popup-locations">
+                                    <strong>Lokasi Detail:</strong>
+                                    <ul style="margin: 5px 0 0 0; padding-left: 20px;">
+                                        ${program.lokasi.map(lok => `<li>${lok}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                    marker.bindPopup(popupContent, { maxWidth: 350, className: 'custom-popup' });
+                    marker.addTo(layer);
+                    allMarkers.push(marker);
+                });
+            });
+        }
+
+        // Filter markers
+        function filterMarkers() {
+            let visibleCount = 0;
+
+            allMarkers.forEach(marker => {
+                const data = marker.programData;
+                let visible = true;
+
+                // Year filter
+                if (activeFilters.year !== 'all' && data.tahun.toString() !== activeFilters.year) {
+                    visible = false;
+                }
+
+                // Budget filter
+                const budgetInJuta = data.anggaran / 1000000;
+                if (activeFilters.budgetMin !== null && budgetInJuta < activeFilters.budgetMin) {
+                    visible = false;
+                }
+                if (activeFilters.budgetMax !== null && budgetInJuta > activeFilters.budgetMax) {
+                    visible = false;
+                }
+
+                // Kecamatan filter
+                const hasMatchingKecamatan = data.kecamatan.some(kec => activeFilters.kecamatan.has(kec));
+                if (!hasMatchingKecamatan) {
+                    visible = false;
+                }
+
+                // Program type filter
+                if (activeFilters.program !== 'all' && data.type !== activeFilters.program) {
+                    visible = false;
+                }
+
+                // Search filter
+                if (activeFilters.search) {
+                    const searchLower = activeFilters.search.toLowerCase();
+                    const matchName = data.name.toLowerCase().includes(searchLower);
+                    const matchLokasi = data.lokasi.some(lok => lok.toLowerCase().includes(searchLower));
+                    const matchKecamatan = data.kecamatan.some(kec => kec.toLowerCase().includes(searchLower));
+
+                    if (!matchName && !matchLokasi && !matchKecamatan) {
+                        visible = false;
+                    }
+                }
+
+                // Show/hide marker
+                if (visible) {
+                    marker.setOpacity(1);
+                    visibleCount++;
+                } else {
+                    marker.setOpacity(0);
+                    marker.closePopup();
+                }
+            });
+
+            document.getElementById('stat-visible').textContent = visibleCount;
+        }
+
+        // Update stats
+        function updateStats() {
+            const total = allMarkers.length;
+            document.getElementById('stat-total').textContent = total;
+            document.getElementById('stat-visible').textContent = total;
+        }
+
+        // Toggle year
+        function toggleYear(year) {
+            activeFilters.year = year;
+
+            document.querySelectorAll('.year-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            filterMarkers();
+        }
+
+        // Set budget range
+        function setBudgetRange(min, max) {
+            document.getElementById('budgetMin').value = min || '';
+            document.getElementById('budgetMax').value = max === 9999 ? '' : max;
+
+            activeFilters.budgetMin = min || null;
+            activeFilters.budgetMax = max === 9999 ? null : max;
+
+            document.querySelectorAll('.budget-quick-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            filterMarkers();
+        }
+
+        // Budget input listeners
+        document.getElementById('budgetMin').addEventListener('input', function () {
+            activeFilters.budgetMin = this.value ? parseFloat(this.value) : null;
+            document.querySelectorAll('.budget-quick-btn').forEach(btn => btn.classList.remove('active'));
+            filterMarkers();
+        });
+
+        document.getElementById('budgetMax').addEventListener('input', function () {
+            activeFilters.budgetMax = this.value ? parseFloat(this.value) : null;
+            document.querySelectorAll('.budget-quick-btn').forEach(btn => btn.classList.remove('active'));
+            filterMarkers();
+        });
+
+        // Toggle kecamatan
+        function toggleKecamatan(kecamatan) {
+            const checkbox = document.getElementById(`kec-${kecamatan}`);
+            checkbox.checked = !checkbox.checked;
+
+            if (checkbox.checked) {
+                activeFilters.kecamatan.add(kecamatan);
+            } else {
+                activeFilters.kecamatan.delete(kecamatan);
+            }
+
+            filterMarkers();
+        }
+
+        // Search input
+        document.getElementById('searchInput').addEventListener('input', function () {
+            activeFilters.search = this.value;
+            filterMarkers();
+        });
+
+        // Toggle program
+        function toggleProgram(type) {
+            activeFilters.program = type;
+
+            const buttons = document.querySelectorAll('.filter-btn:not(.region)');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            if (type === 'all') {
+                buttons[0].classList.add('active');
+                map.addLayer(programLayers.jdp);
+                map.addLayer(programLayers.pergantian);
+                map.addLayer(programLayers.zona);
+            } else if (type === 'jdp') {
+                buttons[1].classList.add('active');
+                map.addLayer(programLayers.jdp);
+                map.removeLayer(programLayers.pergantian);
+                map.removeLayer(programLayers.zona);
+            } else if (type === 'pergantian') {
+                buttons[2].classList.add('active');
+                map.removeLayer(programLayers.jdp);
+                map.addLayer(programLayers.pergantian);
+                map.removeLayer(programLayers.zona);
+            } else if (type === 'zona') {
+                buttons[3].classList.add('active');
+                map.removeLayer(programLayers.jdp);
+                map.removeLayer(programLayers.pergantian);
+                map.addLayer(programLayers.zona);
+            }
+
+            filterMarkers();
+        }
+
+        // Toggle region
+        function toggleRegion(region) {
+            const button = event.target.closest('.filter-btn');
+            button.classList.toggle('active');
+
+            if (button.classList.contains('active')) {
+                map.addLayer(boundaryLayers[region]);
+            } else {
+                map.removeLayer(boundaryLayers[region]);
+            }
+        }
+
+        // Reset all filters
+        function resetAllFilters() {
+            // Reset year
+            activeFilters.year = 'all';
+            document.querySelectorAll('.year-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.year-btn')[0].classList.add('active');
+
+            // Reset budget
+            activeFilters.budgetMin = null;
+            activeFilters.budgetMax = null;
+            document.getElementById('budgetMin').value = '';
+            document.getElementById('budgetMax').value = '';
+            document.querySelectorAll('.budget-quick-btn').forEach(btn => btn.classList.remove('active'));
+
+            // Reset kecamatan - check all
+            activeFilters.kecamatan.clear();
+            document.querySelectorAll('.kecamatan-checkbox').forEach(checkbox => {
+                checkbox.checked = true;
+                const kec = checkbox.id.replace('kec-', '');
+                activeFilters.kecamatan.add(kec);
+            });
+
+            // Reset program
+            activeFilters.program = 'all';
+            document.querySelectorAll('.filter-btn:not(.region)').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.filter-btn:not(.region)')[0].classList.add('active');
+
+            // Reset search
+            activeFilters.search = '';
+            document.getElementById('searchInput').value = '';
+
+            // Show all layers
+            map.addLayer(programLayers.jdp);
+            map.addLayer(programLayers.pergantian);
+            map.addLayer(programLayers.zona);
+
+            filterMarkers();
+        }
+
+        // Highlight feature
+        function highlightFeature(e) {
+            const layer = e.target;
+            layer.setStyle({
+                weight: 3,
+                fillOpacity: 0.35
+            });
+            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                layer.bringToFront();
+            }
+        }
+
+        function resetHighlight(e) {
+            const layerName = e.target.feature.properties.layerName;
+            if (layerName) {
+                e.target.setStyle(styles[layerName]);
+            }
+        }
+
+        // On each feature
+        function onEachFeature(feature, layer, regionName) {
+            const kecamatanName = feature.properties.name;
+
+            layer.bindPopup(`
+                <div style="text-align: center; font-family: 'Inter', sans-serif;">
+                    <strong style="font-size: 16px; color: #1a1a1a; font-weight: 600;">Kecamatan ${kecamatanName}</strong><br>
+                    <span style="font-size: 14px; color: #666; font-weight: 500;">${regionName}</span>
+                </div>
+            `);
+
+            layer.on({
+                mouseover: highlightFeature,
+                mouseout: resetHighlight,
+                click: function (e) {
+                    map.fitBounds(e.target.getBounds());
+                }
+            });
+
+            const center = layer.getBounds().getCenter();
+            L.marker(center, {
+                icon: L.divIcon({
+                    className: 'label',
+                    html: `<div style="font-size: 10px; font-weight: 600; color: #2c2c2c; text-shadow: 1px 1px 2px white, -1px -1px 2px white, 1px -1px 2px white, -1px 1px 2px white; white-space: nowrap; font-family: 'Inter', sans-serif;">${kecamatanName}</div>`,
+                    iconSize: [100, 20]
+                })
+            }).addTo(layer.feature.properties.layerName === 'sleman' ? boundaryLayers.sleman :
+                layer.feature.properties.layerName === 'yogyakarta' ? boundaryLayers.yogyakarta :
+                    boundaryLayers.bantul);
+        }
+
+        // Load GeoJSON
+        async function loadGeoJSON() {
+            try {
+                const slemanResponse = await fetch('data/batas-wilayah/kabupaten_sleman_34.04_batas_kecamatan.geojson');
+                const slemanData = await slemanResponse.json();
+                L.geoJSON(slemanData, {
+                    style: styles.sleman,
+                    onEachFeature: function (feature, layer) {
+                        feature.properties.layerName = 'sleman';
+                        onEachFeature(feature, layer, 'Kabupaten Sleman');
+                    }
+                }).addTo(boundaryLayers.sleman);
+
+                const yogyaResponse = await fetch('data/batas-wilayah/kota_yogyakarta_34.71_batas_kecamatan.geojson');
+                const yogyaData = await yogyaResponse.json();
+                L.geoJSON(yogyaData, {
+                    style: styles.yogyakarta,
+                    onEachFeature: function (feature, layer) {
+                        feature.properties.layerName = 'yogyakarta';
+                        onEachFeature(feature, layer, 'Kota Yogyakarta');
+                    }
+                }).addTo(boundaryLayers.yogyakarta);
+
+                const bantulResponse = await fetch('data/batas-wilayah/kabupaten_bantul_34.02_batas_kecamatan.geojson');
+                const bantulData = await bantulResponse.json();
+                L.geoJSON(bantulData, {
+                    style: styles.bantul,
+                    onEachFeature: function (feature, layer) {
+                        feature.properties.layerName = 'bantul';
+                        onEachFeature(feature, layer, 'Kabupaten Bantul');
+                    }
+                }).addTo(boundaryLayers.bantul);
+
+                console.log('GeoJSON berhasil dimuat!');
+                document.getElementById('loading').style.display = 'none';
+            } catch (error) {
+                console.error('Error loading GeoJSON:', error);
+                alert('Gagal memuat data peta. Silakan refresh halaman.');
+            }
+        }
+
+        // Legend
+        const legend = L.control({ position: 'bottomright' });
+        legend.onAdd = function (map) {
+            const div = L.DomUtil.create('div', 'legend');
+            div.innerHTML = `
+                <h4>Legenda</h4>
+                
+                <div class="legend-section">
+                    <strong>Wilayah Administrasi</strong>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #4A90E2; border-color: #2E5C8A;"></div>
+                        <span>Kabupaten Sleman</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #E85D75; border-color: #B8364A;"></div>
+                        <span>Kota Yogyakarta</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #50C878; border-color: #3A9B5C;"></div>
+                        <span>Kabupaten Bantul</span>
+                    </div>
+                </div>
+
+                <div class="legend-section">
+                    <strong>Program Infrastruktur</strong>
+                    <div class="legend-item">
+                        <div class="legend-marker" style="background: #5B7FDB;">JDP</div>
+                        <span>Pembangunan JDP</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-marker" style="background: #E07B8F;">JDU</div>
+                        <span>Pergantian Pipa</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-marker" style="background: #5CC9A7;">DMA</div>
+                        <span>Zona & DMA</span>
+                    </div>
+                </div>
+            `;
+            return div;
+        };
+        legend.addTo(map);
+
+        // Initialize
+        loadGeoJSON();
+        loadProgramData();
+
+        console.log('Peta program infrastruktur air berhasil dimuat!');
+    </script>
+</body>
+
+</html>

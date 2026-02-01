@@ -1,0 +1,788 @@
+{
+  "jdp": [
+    {
+      "name": "JDP Karangkajen - Menukan 2",
+      "kecamatan": [
+        "Mergangsan"
+      ],
+      "lokasi": [
+        "Jalan Gang Menukan 2"
+      ],
+      "center": [
+        -7.823189106228935,
+        110.37062076402619
+      ],
+      "tahun": 2026,
+      "anggaran": 150705000
+    },
+    {
+      "name": "JDP Karangkajen",
+      "kecamatan": [
+        "Mergangsan"
+      ],
+      "lokasi": [
+        "Jalan Karangkajen"
+      ],
+      "center": [
+        -7.822558387738794,
+        110.37031530457112
+      ],
+      "tahun": 2026,
+      "anggaran": 315180000
+    },
+    {
+      "name": "JDP Panti Wredha-Karangmiri",
+      "kecamatan": [
+        "Umbulharjo"
+      ],
+      "lokasi": [
+        "Jalan Karangmiri"
+      ],
+      "center": [
+        -7.830852183750866,
+        110.39138710821565
+      ],
+      "tahun": 2026,
+      "anggaran": 372000000
+    },
+    {
+      "name": "JDP Kenanga-Kanthil-Kemuning-Menur Raya",
+      "kecamatan": [
+        "Kotagede"
+      ],
+      "lokasi": [
+        "Jalan Kenanga"
+      ],
+      "center": [
+        -7.808630826110408,
+        110.40001310874267
+      ],
+      "tahun": 2026,
+      "anggaran": 588285000
+    },
+    {
+      "name": "JDP Kenanga-Kanthil-Kemuning-Menur Raya",
+      "kecamatan": [
+        "Kotagede"
+      ],
+      "lokasi": [
+        "Jalan Kanthil"
+      ],
+      "center": [
+        -7.808452784300536,
+        110.40068097885872
+      ],
+      "tahun": 2026,
+      "anggaran": 588285000
+    },
+    {
+      "name": "JDP Kenanga-Kanthil-Kemuning-Menur Raya",
+      "kecamatan": [
+        "Kotagede"
+      ],
+      "lokasi": [
+        "Jalan Kemuning"
+      ],
+      "center": [
+        -7.808381036255645,
+        110.39928891225289
+      ],
+      "tahun": 2026,
+      "anggaran": 588285000
+    },
+    {
+      "name": "JDP Kenanga-Kanthil-Kemuning-Menur Raya",
+      "kecamatan": [
+        "Kotagede"
+      ],
+      "lokasi": [
+        "Jalan Menur Raya"
+      ],
+      "center": [
+        -7.808798515900417,
+        110.399726404623
+      ],
+      "tahun": 2026,
+      "anggaran": 588285000
+    },
+    {
+      "name": "JDP Perumahan Gedong Kuning Asri",
+      "kecamatan": [
+        "Kotagede"
+      ],
+      "lokasi": [
+        "Jalan Perumahan Gedong Kuning Asri"
+      ],
+      "center": [
+        -7.809556570622942,
+        110.3999616523848
+      ],
+      "tahun": 2026,
+      "anggaran": 237915000
+    },
+    {
+      "name": "JDP Penyu",
+      "kecamatan": [
+        "Kotagede"
+      ],
+      "lokasi": [
+        "Jalan Penyu"
+      ],
+      "center": [
+        -7.825329641287244,
+        110.4015689320743
+      ],
+      "tahun": 2026,
+      "anggaran": 612000000
+    },
+    {
+      "name": "JDP Melati - Segoro Amarto 2 - Prof. Dr. Soepomo",
+      "kecamatan": [
+        "Umbulharjo"
+      ],
+      "lokasi": [
+        "Jalan Melati"
+      ],
+      "center": [
+        -7.812635850560175,
+        110.39097196399042
+      ],
+      "tahun": 2026,
+      "anggaran": 397800000
+    },
+    {
+      "name": "JDP Melati - Segoro Amarto 2 - Prof. Dr. Soepomo",
+      "kecamatan": [
+        "Umbulharjo"
+      ],
+      "lokasi": [
+        "Jalan Segoro Amarto"
+      ],
+      "center": [
+        -7.81371503199175,
+        110.39125707967668
+      ],
+      "tahun": 2026,
+      "anggaran": 397800000
+    },
+    {
+      "name": "JDP Melati - Segoro Amarto 2 - Prof. Dr. Soepomo",
+      "kecamatan": [
+        "Umbulharjo"
+      ],
+      "lokasi": [
+        "Jalan Prof. Dr. Soepomo"
+      ],
+      "center": [
+        -7.812809877351988,
+        110.3895766308481
+      ],
+      "tahun": 2026,
+      "anggaran": 397800000
+    },
+    {
+      "name": "JDP Mantrijeron",
+      "kecamatan": [
+        "Mantrijeron"
+      ],
+      "lokasi": [
+        "Belum ditentukan"
+      ],
+      "center": [
+        -7.820018645487866,
+        110.3584209239845
+      ],
+      "tahun": 2027,
+      "anggaran": 900000000
+    },
+    {
+      "name": "JDP Kraton",
+      "kecamatan": [
+        "Kraton"
+      ],
+      "lokasi": [
+        "Belum ditentukan"
+      ],
+      "center": [
+        -7.8089847170645585,
+        110.36168999145222
+      ],
+      "tahun": 2027,
+      "anggaran": 900000000
+    },
+    {
+      "name": "JDP Gondomanan",
+      "kecamatan": [
+        "Gondomanan"
+      ],
+      "lokasi": [
+        "Belum ditentukan"
+      ],
+      "center": [
+        -7.798569602572741,
+        110.36688495893695
+      ],
+      "tahun": 2027,
+      "anggaran": 900000000
+    },
+    {
+      "name": "JDP Ngampilan",
+      "kecamatan": [
+        "Ngampilan"
+      ],
+      "lokasi": [
+        "Belum ditentukan"
+      ],
+      "center": [
+        -7.799307550822976,
+        110.35817801677216
+      ],
+      "tahun": 2028,
+      "anggaran": 900000000
+    },
+    {
+      "name": "JDP Wirobrajan",
+      "kecamatan": [
+        "Wirobrajan"
+      ],
+      "lokasi": [
+        "Belum ditentukan"
+      ],
+      "center": [
+        -7.80301873962909,
+        110.35069769181179
+      ],
+      "tahun": 2028,
+      "anggaran": 900000000
+    },
+    {
+      "name": "JDP Gedongtengen",
+      "kecamatan": [
+        "Gedongtengen"
+      ],
+      "lokasi": [
+        "Belum ditentukan"
+      ],
+      "center": [
+        -7.79207139769103,
+        110.36036497884791
+      ],
+      "tahun": 2028,
+      "anggaran": 900000000
+    },
+    {
+      "name": "JDP Jetis",
+      "kecamatan": [
+        "Jetis"
+      ],
+      "lokasi": [
+        "Belum ditentukan"
+      ],
+      "center": [
+        -7.784151756644861,
+        110.36409262544657
+      ],
+      "tahun": 2028,
+      "anggaran": 900000000
+    },
+    {
+      "name": "JDP Tegalrejo",
+      "kecamatan": [
+        "Tegalrejo"
+      ],
+      "lokasi": [
+        "Belum ditentukan"
+      ],
+      "center": [
+        -7.776675145663813,
+        110.35882831618024
+      ],
+      "tahun": 2029,
+      "anggaran": 900000000
+    },
+    {
+      "name": "JDP Danurejan",
+      "kecamatan": [
+        "Danurejan"
+      ],
+      "lokasi": [
+        "Belum ditentukan"
+      ],
+      "center": [
+        -7.792490184441151,
+        110.37067406508001
+      ],
+      "tahun": 2029,
+      "anggaran": 900000000
+    },
+    {
+      "name": "JDP Pakualaman",
+      "kecamatan": [
+        "Pakualaman"
+      ],
+      "lokasi": [
+        "Belum ditentukan"
+      ],
+      "center": [
+        -7.7992703017421965,
+        110.37499880356734
+      ],
+      "tahun": 2029,
+      "anggaran": 900000000
+    },
+    {
+      "name": "JDP Gondokusuman",
+      "kecamatan": [
+        "Gondokusuman"
+      ],
+      "lokasi": [
+        "Belum ditentukan"
+      ],
+      "center": [
+        -7.788128209494056,
+        110.38482759164812
+      ],
+      "tahun": 2029,
+      "anggaran": 900000000
+    }
+  ],
+  "pergantian": [
+    {
+      "name": "Pergantian Pipa Jalan Tamansiswa 2026",
+      "kecamatan": [
+        "Mergangsan"
+      ],
+      "lokasi": [
+        "Jl Taman Siswa, Mergangsan"
+      ],
+      "center": [
+        -7.80779903514409,
+        110.37745899802273
+      ],
+      "tahun": 2026,
+      "anggaran": 1799829867.90
+    },
+    {
+      "name": "Pergantian Pipa Jalan Tamansiswa 2027",
+      "kecamatan": [
+        "Mergangsan"
+      ],
+      "lokasi": [
+        "Jl Taman Siswa, Mergangsan"
+      ],
+      "center": [
+        -7.80779903514409,
+        110.37745899802273
+      ],
+      "tahun": 2027,
+      "anggaran": 230800000
+    },
+    {
+      "name": "Pergantian Pipa Jalan Tamansiswa 2028",
+      "kecamatan": [
+        "Mergangsan"
+      ],
+      "lokasi": [
+        "Jl Taman Siswa, Mergangsan"
+      ],
+      "center": [
+        -7.80779903514409,
+        110.37745899802273
+      ],
+      "tahun": 2028,
+      "anggaran": 228400000
+    },
+    {
+      "name": "Pergantian Pipa Jalan Tamansiswa 2029",
+      "kecamatan": [
+        "Mergangsan"
+      ],
+      "lokasi": [
+        "Jl Taman Siswa, Mergangsan"
+      ],
+      "center": [
+        -7.80779903514409,
+        110.37745899802273
+      ],
+      "tahun": 2029,
+      "anggaran": 88800000
+    },
+    {
+      "name": "Pergantian Pipa Jalan Tamansiswa 2030",
+      "kecamatan": [
+        "Mergangsan"
+      ],
+      "lokasi": [
+        "Jl Taman Siswa, Mergangsan"
+      ],
+      "center": [
+        -7.80779903514409,
+        110.37745899802273
+      ],
+      "tahun": 2030,
+      "anggaran": 44600000
+    },
+    {
+      "name": "Pergantian Pipa Kali Mambu",
+      "kecamatan": [
+        "Umbulharjo"
+      ],
+      "lokasi": [
+        "Kali Mambu, Umbulharjo"
+      ],
+      "center": [
+        -7.816537384953737,
+        110.3849129974749
+      ],
+      "tahun": 2027,
+      "anggaran": 2952684563.40
+    },
+    {
+      "name": "Pergantian Pipa Bedog-Jatikencana",
+      "kecamatan": [
+        "Gamping, Sleman"
+      ],
+      "lokasi": [
+        "Bedog"
+      ],
+      "center": [
+        -7.758446769700433,
+        110.33841501813454
+      ],
+      "tahun": 2028,
+      "anggaran": 25038143000
+    },
+    {
+      "name": "Pergantian Pipa Bedog-Jatikencana",
+      "kecamatan": [
+        "Tegalrejo"
+      ],
+      "lokasi": [
+        "Jatikencana"
+      ],
+      "center": [
+        -7.781710570605082,
+        110.35288601722563
+      ],
+      "tahun": 2028,
+      "anggaran": 25038143000
+    },
+    {
+      "name": "Pergantian Pipa Kampung Wonosalam-Perum Sukoharjo",
+      "kecamatan": [
+        "Ngaglik, Sleman"
+      ],
+      "lokasi": [
+        "Kampung Wonosalam"
+      ],
+      "center": [
+        -7.69143698053922,
+        110.42776828107449
+      ],
+      "tahun": 2026,
+      "anggaran": 831660000
+    },
+    {
+      "name": "Pergantian Pipa Kampung Wonosalam-Perum Sukoharjo",
+      "kecamatan": [
+        "Ngaglik, Sleman"
+      ],
+      "lokasi": [
+        "Perum Sukoharjo"
+      ],
+      "center": [
+        -7.697229935096626,
+        110.42928608952886
+      ],
+      "tahun": 2026,
+      "anggaran": 831660000
+    },
+    {
+      "name": "Pergantian Pipa Daerah Purwokinanti - Lempuyangan - Jlagran",
+      "kecamatan": [
+        "Pakualaman"
+      ],
+      "lokasi": [
+        "Daerah Purwokinanti"
+      ],
+      "center": [
+        -7.798622451094204,
+        110.3740405833787
+      ],
+      "tahun": 2027,
+      "anggaran": 1056693000
+    },
+    {
+      "name": "Pergantian Pipa Daerah Purwokinanti - Lempuyangan - Jlagran",
+      "kecamatan": [
+        "Danurejan"
+      ],
+      "lokasi": [
+        "Daerah Lempuyangan"
+      ],
+      "center": [
+        -7.791399904708752,
+        110.37456906685387
+      ],
+      "tahun": 2027,
+      "anggaran": 1056693000
+    },
+    {
+      "name": "Pergantian Pipa Daerah Purwokinanti - Lempuyangan - Jlagran",
+      "kecamatan": [
+        "Gedongtengen"
+      ],
+      "lokasi": [
+        "Daerah Jlagran"
+      ],
+      "center": [
+        -7.790357999419763,
+        110.35992169999894
+      ],
+      "tahun": 2027,
+      "anggaran": 1056693000
+    },
+    {
+      "name": "Pergantian Pipa Daerah Kemetiran - Purwokinanti - Dalem Ngampilan",
+      "kecamatan": [
+        "Gedongtengen"
+      ],
+      "lokasi": [
+        "Daerah Kemetiran"
+      ],
+      "center": [
+        -7.792102425056016,
+        110.3601220671786
+      ],
+      "tahun": 2028,
+      "anggaran": 754190000
+    },
+    {
+      "name": "Pergantian Pipa Daerah Kemetiran - Purwokinanti - Dalem Ngampilan",
+      "kecamatan": [
+        "Pakualaman"
+      ],
+      "lokasi": [
+        "Daerah Purwokinanti"
+      ],
+      "center": [
+        -7.798223793571653,
+        110.37339491525834
+      ],
+      "tahun": 2028,
+      "anggaran": 754190000
+    },
+    {
+      "name": "Pergantian Pipa Daerah Kemetiran - Purwokinanti - Dalem Ngampilan",
+      "kecamatan": [
+        "Ngampilan"
+      ],
+      "lokasi": [
+        "Daerah Dalem Ngampilan"
+      ],
+      "center": [
+        -7.798010857296506,
+        110.35920461246423
+      ],
+      "tahun": 2028,
+      "anggaran": 754190000
+    },
+    {
+      "name": "Pergantian Pipa Daerah Jenggotan - Jl. Tirtamarta II Bak Gemawang - Jl. A.M. Sangaji",
+      "kecamatan": [
+        "Jetis"
+      ],
+      "lokasi": [
+        "Daerah Jenggotan"
+      ],
+      "center": [
+        -7.781179912742577,
+        110.36023931431315
+      ],
+      "tahun": 2029,
+      "anggaran": 440275000
+    },
+    {
+      "name": "Pergantian Pipa Daerah Jenggotan - Jl. Tirtamarta II Bak Gemawang - Jl. A.M. Sangaji",
+      "kecamatan": [
+        "Ngaglik, Sleman"
+      ],
+      "lokasi": [
+        "Daerah Jl. Tirtamarta II Bak Gemawang"
+      ],
+      "center": [
+        -7.754633762094454,
+        110.37142177038426
+      ],
+      "tahun": 2029,
+      "anggaran": 440275000
+    },
+    {
+      "name": "Pergantian Pipa Daerah Jenggotan - Jl. Tirtamarta II Bak Gemawang - Jl. A.M. Sangaji",
+      "kecamatan": [
+        "Jetis"
+      ],
+      "lokasi": [
+        "Daerah Jl. A.M. Sangaji"
+      ],
+      "center": [
+        -7.774255318742905,
+        110.36795345014025
+      ],
+      "tahun": 2029,
+      "anggaran": 440275000
+    }
+  ],
+  "zona": [
+    {
+      "name": "Zona DMA Taman Siswa - Batikan dan Rejowinangun",
+      "kecamatan": [
+        "Mergangsan"
+      ],
+      "lokasi": [
+        "Taman Siswa Timur Jalan sampai Batikan"
+      ],
+      "center": [
+        -7.809613168452874,
+        110.37731165780431
+      ],
+      "tahun": 2026,
+      "anggaran": 550000000
+    },
+    {
+      "name": "Zona DMA Taman Siswa - Batikan dan Rejowinangun",
+      "kecamatan": [
+        "Kotagede"
+      ],
+      "lokasi": [
+        "Rejowinangun"
+      ],
+      "center": [
+        -7.809632451987432,
+        110.39796096048326
+      ],
+      "tahun": 2026,
+      "anggaran": 550000000
+    },
+    {
+      "name": "Zona DMA Tompeyan dan Komplek BPK",
+      "kecamatan": [
+        "Tegalrejo"
+      ],
+      "lokasi": [
+        "Tompeyan"
+      ],
+      "center": [
+        -7.784559036768843,
+        110.3542730601863
+      ],
+      "tahun": 2027,
+      "anggaran": 550000000
+    },
+    {
+      "name": "Zona DMA Tompeyan dan Komplek BPK",
+      "kecamatan": [
+        "Tegalrejo"
+      ],
+      "lokasi": [
+        "Komplek BPK"
+      ],
+      "center": [
+        -7.798253422987476,
+        110.35214670086262
+      ],
+      "tahun": 2027,
+      "anggaran": 550000000
+    },
+    {
+      "name": "Zona DMA Perum BKN Gedong Kuning dan Perum Malangan Indah",
+      "kecamatan": [
+        "Kotagede"
+      ],
+      "lokasi": [
+        "Perum BKN Gedong Kuning"
+      ],
+      "center": [
+        -7.814138619634531,
+        110.40098839507164
+      ],
+      "tahun": 2028,
+      "anggaran": 550000000
+    },
+    {
+      "name": "Zona DMA Perum BKN Gedong Kuning dan Perum Malangan Indah",
+      "kecamatan": [
+        "Umbulharjo"
+      ],
+      "lokasi": [
+        "Perum Malangan Indah"
+      ],
+      "center": [
+        -7.835969756545464,
+        110.38888547893241
+      ],
+      "tahun": 2028,
+      "anggaran": 550000000
+    },
+    {
+      "name": "Zona DMA Perum Batan dan Perum Wirokerten",
+      "kecamatan": [
+        "Banguntapan, Bantul"
+      ],
+      "lokasi": [
+        "Perum Batan"
+      ],
+      "center": [
+        -7.817523769472759,
+        110.40438059283339
+      ],
+      "tahun": 2029,
+      "anggaran": 550000000
+    },
+    {
+      "name": "Zona DMA Perum Batan dan Perum Wirokerten",
+      "kecamatan": [
+        "Banguntapan, Bantul"
+      ],
+      "lokasi": [
+        "Perum Wirokerten"
+      ],
+      "center": [
+        -7.831154075017755,
+        110.40527899084657
+      ],
+      "tahun": 2029,
+      "anggaran": 550000000
+    },
+    {
+      "name": "Zona DMA Serangan dan Mancasan",
+      "kecamatan": [
+        "Ngampilan"
+      ],
+      "lokasi": [
+        "Serangan"
+      ],
+      "center": [
+        -7.802919043901119,
+        110.35435494714811
+      ],
+      "tahun": 2030,
+      "anggaran": 550000000
+    },
+    {
+      "name": "Zona DMA Serangan dan Mancasan",
+      "kecamatan": [
+        "Wirobrajan"
+      ],
+      "lokasi": [
+        "Mancasan"
+      ],
+      "center": [
+        -7.806857509260954,
+        110.3528680341735
+      ],
+      "tahun": 2030,
+      "anggaran": 550000000
+    }
+  ]
+}
